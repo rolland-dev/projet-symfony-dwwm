@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ingrédients{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <h1>Ingrédient</h1>
+
+    <div class="d-flex justify-content-center">
+      {% for message in app.flashes('success') %}
+      <div class="flash-notice">
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="count d-flex justify-content-center">
+        {% if ingredients.getTotalItemCount %}
+            {{ ingredients.getTotalItemCount }} Ingrédients
+        {% else %}
+            Pas d'Ingrédients
+        {% endif %}
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Numéro</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Date de création</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for ingredient in ingredients %}
+                <tr class="table-primary">
+                    <th scope="row">{{ ingredient.id }}</th>
+                    <td>{{ ingredient.nom }}</td>
+                    <td>{{ ingredient.prix }}</td>
+                    <td>{{ ingredient.createdAt|date("d/m/Y") }}</td>
+                </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="navigation d-flex justify-content-center">
+        {% if ingredients.getTotalItemCount %}
+            {{ knp_pagination_render(ingredients) }}
+        {% endif %}
+      </div>
+</div>
+{% endblock %}
