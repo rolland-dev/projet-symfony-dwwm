@@ -5,7 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Ingredients;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Faker\Factory as FakerFactory;
+use Faker\Factory;
 use Faker\Generator;
 
 class AppFixtures extends Fixture
@@ -14,7 +14,7 @@ class AppFixtures extends Fixture
 
     public function __construct()
     {
-        $this -> faker = FakerFactory::create('fr_FR');
+        $this -> faker = Factory::create('fr_FR');
     }
     public function load(ObjectManager $manager): void
     {

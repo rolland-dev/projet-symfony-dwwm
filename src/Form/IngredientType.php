@@ -28,7 +28,7 @@ class IngredientType extends AbstractType
             ])
             ->add('prix', MoneyType::class,[
                 'attr'=>[
-                    'class'=>'form-controle'
+                    'class'=>'form-control'
                 ],
                 'label'=>'Prix',
                 'label_attr'=>[

@@ -1,12 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Nouveau{% endblock %} {% block
+body %}
 
-{% block title %}Nouveau{% endblock %}
-
-{% block body %}
-
-<div class="container mt-4">
-    <h1>Nouvel ingrédient</h1>
+<div class="text-center mt-4">
+  <h1>Nouvel ingrédient</h1>
 </div>
 
-{{ form(form) }}
+<div class="d-flex justify-content-center">
+  <div class="col-3 text-center">
+    {{ form(form) }}
+  </div>
+</div>
+
 {% endblock %}

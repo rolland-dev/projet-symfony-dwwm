@@ -29,7 +29,8 @@ class IngredientController extends AbstractController
         $ingredients = $paginator->paginate(
             $repo->findAll(),
             $request->query->getInt('page',1),
-            10 /*limite par page*/
+            10, /*limite par page*/
+            ['sortDirectionParameterName' => 'dir']
         );
         return $this->render('ingredient/index.html.twig',[
             'ingredients'=> $ingredients

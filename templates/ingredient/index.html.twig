@@ -9,7 +9,7 @@
 
     <div class="d-flex justify-content-center">
       {% for message in app.flashes('success') %}
-      <div class="flash-notice">
+      <div class="alert alert-success mt-4">
         {{ message }}
       </div>
       {% endfor %}
@@ -46,7 +46,8 @@
 
       <div class="navigation d-flex justify-content-center">
         {% if ingredients.getTotalItemCount %}
-            {{ knp_pagination_render(ingredients) }}
+            {{ knp_pagination_render(ingredients,
+              '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
         {% endif %}
       </div>
 </div>
