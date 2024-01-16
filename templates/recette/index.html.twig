@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <h1>Recettes</h1>
+
+    <div class="d-flex justify-content-center">
+      {% for message in app.flashes('success') %}
+      <div class="alert alert-success mt-4">
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    <a href="{{ path('new')}}" class="btn btn-primary">Nouvelle recette</a>
+    <div class="count d-flex justify-content-center">
+        {% if recettes.getTotalItemCount %}
+            {{ recettes.getTotalItemCount }} recettes
+        {% else %}
+            Pas de recette
+        {% endif %}
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Numéro</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Temps</th>
+            <th scope="col">Nb personnes</th>
+            <th scope="col">Difficulté</th>
+            <th scope="col">Descriptif</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Favorite</th>
+            <th scope="col">Date de création</th>
+            <th scope="col">Date de mise à jour</th>
+            <th scope="col">Ingrédients</th>
+            <th scope="col">Edition</th>
+            <th scope="col">Suppression</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for recette in recettes %}
+                <tr class="table-primary">
+                    <th scope="row">{{ recette.id }}</th>
+                    <td>{{ recette.nom }}</td>
+                    <td>{{ (recette.temps==null) ? 'Non renseigné' : recette.temps }}</td>
+                    <td>{{ recette.personne }}</td>
+                    <td>{{ (recette.difficulte==null) ? 'Non renseigné' : recette.difficulte }}</td>
+                    <td>{{ recette.description }}</td>
+                    <td>{{ (recette.prix==null) ? 'Non renseigné' : recette.prix }}</td>
+                    <td>{{ recette.favori }}</td>
+                    <td>{{ recette.createdAt|date("d/m/Y") }}</td>
+                    <td>{{ recette.updateAt|date("d/m/Y") }}</td>
+                    {# <td>{{ recette.ingredient }}</td> #}
+                    <td>
+                      <a href="{{ path('edit' , {id : recette.id})}}" class="btn btn-info">Editer</a>
+                    </td>
+                    <td>
+                      <a href="{{ path('delete', {id: recette.id})}}" onclick="return confirm('Etes vous sûr de vouloir supprimer l\'ingrédient ?')" class="btn btn-warning">Supprimer</a>
+                    </td>
+                </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="navigation d-flex justify-content-center">
+        {% if recettes.getTotalItemCount %}
+            {{ knp_pagination_render(recettes,
+              '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+        {% endif %}
+      </div>
+</div>
+{% endblock %}

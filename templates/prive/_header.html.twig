@@ -7,9 +7,17 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Accueil
+            <a class="nav-link" href="{{ path('app_home')}}">Accueil
             </a>
-          </li>      
+          </li>   
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_ingredient')}}">Ingrédients
+            </a>
+          </li>   
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_recette')}}">Recettes
+            </a>
+          </li>    
       </div>
     </div>
   </nav>

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mise à jouor recette{% endblock %}
+
+{% block body %}
+
+<div class="text-center mt-4">
+    <h1 class="mt-4">Modification d'une recette</h1>
+
+    <div class="d-flex justify-content-center">
+        <div class="col-3 text-center">
+            {{ form_start(form) }}
+            <div class="my-custom-class-for-errors">
+                {{ form_errors(form) }}
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.nom) }} 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="some-custom-id">
+                    {{ form_row(form.prix)}}
+                </div>
+                <div class="col">
+                    {{ form_row(form.temps) }}
+                </div>
+                <div class="col" id="some-custom-id">
+                    {{ form_row(form.personne)}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.difficulte) }} 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.description) }} 
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col d-flex justify-content-center">
+                    {{ form_row(form.favori) }} 
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col d-flex justify-item- ">
+                    {{ form_row(form.ingredients) }} 
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

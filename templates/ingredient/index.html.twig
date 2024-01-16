@@ -14,6 +14,7 @@
       </div>
       {% endfor %}
     </div>
+    <a href="{{ path('new')}}" class="btn btn-primary">Nouveau ingrédient</a>
 
     <div class="count d-flex justify-content-center">
         {% if ingredients.getTotalItemCount %}
@@ -30,6 +31,8 @@
             <th scope="col">Nom</th>
             <th scope="col">Prix</th>
             <th scope="col">Date de création</th>
+            <th scope="col">Edition</th>
+            <th scope="col">Suppression</th>
           </tr>
         </thead>
         <tbody>
@@ -39,6 +42,12 @@
                     <td>{{ ingredient.nom }}</td>
                     <td>{{ ingredient.prix }}</td>
                     <td>{{ ingredient.createdAt|date("d/m/Y") }}</td>
+                    <td>
+                      <a href="{{ path('edit' , {id : ingredient.id})}}" class="btn btn-info">Editer</a>
+                    </td>
+                    <td>
+                      <a href="{{ path('delete', {id: ingredient.id})}}" onclick="return confirm('Etes vous sûr de vouloir supprimer l\'ingrédient ?')" class="btn btn-warning">Supprimer</a>
+                    </td>
                 </tr>
           {% endfor %}
         </tbody>
