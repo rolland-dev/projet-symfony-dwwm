@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Administration</h1>
+    <hr class="my-4">
+    <p>Bienvenue dans l'administartion du site, accès protégé.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="{{ path('app_logout')}}" role="button">Déconnexion</a>
+    </p>
+  </div>
+
+{% endblock %}
